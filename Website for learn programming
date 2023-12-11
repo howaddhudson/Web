@@ -88,3 +88,79 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Learning Website</title>
+    <style>
+        /* Styles as before */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Programming Learning Website</h1>
+    </header>
+    
+    <nav>
+        <a href="#" onclick="loadContent('home')">Home</a>
+        <a href="#" onclick="loadContent('html')">HTML</a>
+        <a href="#" onclick="loadContent('css')">CSS</a>
+        <a href="#" onclick="loadContent('javascript')">JavaScript</a>
+        <!-- Add more topics as needed -->
+        <a href="#" onclick="loadContent('progress')">Progress</a>
+    </nav>
+
+    <section id="content">
+        <h2>Welcome to our programming learning website!</h2>
+        <p>Select a programming topic from the navigation bar to get started.</p>
+
+        <h3>Code Submission</h3>
+        <p>Submit your code for review:</p>
+        <form id="codeForm">
+            <label for="code">Your Code:</label><br>
+            <textarea id="code" name="code" rows="10" cols="50"></textarea><br>
+            <input type="submit" value="Submit Code">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Programming Learning Website</p>
+    </footer>
+
+    <script>
+        function loadContent(topic) {
+            var contentElement = document.getElementById('content');
+            switch (topic) {
+                case 'home':
+                    contentElement.innerHTML = "<h2>Welcome to our programming learning website!</h2><p>Select a programming topic from the navigation bar to get started.</p>";
+                    break;
+                case 'html':
+                    contentElement.innerHTML = "<h2>HTML Basics</h2><p>Learn the fundamentals of HTML...</p>";
+                    break;
+                case 'css':
+                    contentElement.innerHTML = "<h2>CSS Styling</h2><p>Explore the world of CSS for styling web pages...</p>";
+                    break;
+                case 'javascript':
+                    contentElement.innerHTML = "<h2>JavaScript Fundamentals</h2><p>Get started with JavaScript programming...</p>";
+                    break;
+                case 'progress':
+                    contentElement.innerHTML = "<h2>User Progress</h2><p>Track your progress and completed lessons here...</p>";
+                    break;
+                default:
+                    contentElement.innerHTML = "<h2>404 - Not Found</h2><p>The requested page does not exist.</p>";
+                    break;
+            }
+        }
+
+        document.getElementById("codeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Add code to handle the submitted code (e.g., send it to a server for processing)
+            // You may want to use AJAX or fetch to send the code to a server-side script.
+        });
+    </script>
+</body>
+</html>
