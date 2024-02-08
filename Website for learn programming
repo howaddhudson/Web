@@ -5,97 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programming Learning Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #4CAF50;
-            overflow: hidden;
-        }
-
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        section {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Programming Learning Website</h1>
-    </header>
-    
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">HTML</a>
-        <a href="#">CSS</a>
-        <a href="#">JavaScript</a>
-        <!-- Add more topics as needed -->
-    </nav>
-
-    <section>
-        <h2>Welcome to our programming learning website!</h2>
-        <p>Select a programming topic from the navigation bar to get started.</p>
-
-        <h3>Code Submission</h3>
-        <p>Submit your code for review:</p>
-        <form id="codeForm">
-            <label for="code">Your Code:</label><br>
-            <textarea id="code" name="code" rows="10" cols="50"></textarea><br>
-            <input type="submit" value="Submit Code">
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Programming Learning Website</p>
-    </footer>
-
-    <script>
-        document.getElementById("codeForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            // Add code to handle the submitted code (e.g., send it to a server for processing)
-            // You may want to use AJAX or fetch to send the code to a server-side script.
-        });
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Learning Website</title>
-    <style>
         /* Styles as before */
     </style>
 </head>
@@ -109,7 +18,6 @@
         <a href="#" onclick="loadContent('html')">HTML</a>
         <a href="#" onclick="loadContent('css')">CSS</a>
         <a href="#" onclick="loadContent('javascript')">JavaScript</a>
-        <!-- Add more topics as needed -->
         <a href="#" onclick="loadContent('progress')">Progress</a>
     </nav>
 
@@ -121,8 +29,8 @@
         <p>Submit your code for review:</p>
         <form id="codeForm">
             <label for="code">Your Code:</label><br>
-            <textarea id="code" name="code" rows="10" cols="50"></textarea><br>
-            <input type="submit" value="Submit Code">
+            <textarea id="code" name="code" rows="10" cols="50" required></textarea><br>
+            <button type="submit">Submit Code</button>
         </form>
     </section>
 
@@ -157,9 +65,15 @@
 
         document.getElementById("codeForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            
-            // Add code to handle the submitted code (e.g., send it to a server for processing)
-            // You may want to use AJAX or fetch to send the code to a server-side script.
+
+            var code = document.getElementById("code").value;
+            if (code.trim() !== "") {
+                alert("Code submitted:\n" + code);
+                // Add code to send the code to the server for processing
+                // You may want to use AJAX or fetch to send the code to a server-side script.
+            } else {
+                alert("Please enter some code before submitting.");
+            }
         });
     </script>
 </body>
