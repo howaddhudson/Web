@@ -18,6 +18,8 @@
         <a href="#" onclick="loadContent('html')">HTML</a>
         <a href="#" onclick="loadContent('css')">CSS</a>
         <a href="#" onclick="loadContent('javascript')">JavaScript</a>
+        <a href="#" onclick="loadContent('python')">Python</a>
+        <!-- Add more topics as needed -->
         <a href="#" onclick="loadContent('progress')">Progress</a>
     </nav>
 
@@ -39,27 +41,44 @@
     </footer>
 
     <script>
+        // Sample lessons for each topic
+        const lessons = {
+            html: {
+                title: "HTML Basics",
+                content: "Learn the fundamentals of HTML...",
+                video: "https://www.youtube.com/watch?v=xxxxxx"
+            },
+            css: {
+                title: "CSS Styling",
+                content: "Explore the world of CSS for styling web pages...",
+                video: "https://www.youtube.com/watch?v=yyyyyy"
+            },
+            javascript: {
+                title: "JavaScript Fundamentals",
+                content: "Get started with JavaScript programming...",
+                video: "https://www.youtube.com/watch?v=zzzzzz"
+            },
+            python: {
+                title: "Python Programming",
+                content: "Learn the basics of Python programming...",
+                video: "https://www.youtube.com/watch?v=wwwwww"
+            }
+            // Add more lessons for other topics
+        };
+
         function loadContent(topic) {
             var contentElement = document.getElementById('content');
-            switch (topic) {
-                case 'home':
-                    contentElement.innerHTML = "<h2>Welcome to our programming learning website!</h2><p>Select a programming topic from the navigation bar to get started.</p>";
-                    break;
-                case 'html':
-                    contentElement.innerHTML = "<h2>HTML Basics</h2><p>Learn the fundamentals of HTML...</p>";
-                    break;
-                case 'css':
-                    contentElement.innerHTML = "<h2>CSS Styling</h2><p>Explore the world of CSS for styling web pages...</p>";
-                    break;
-                case 'javascript':
-                    contentElement.innerHTML = "<h2>JavaScript Fundamentals</h2><p>Get started with JavaScript programming...</p>";
-                    break;
-                case 'progress':
-                    contentElement.innerHTML = "<h2>User Progress</h2><p>Track your progress and completed lessons here...</p>";
-                    break;
-                default:
-                    contentElement.innerHTML = "<h2>404 - Not Found</h2><p>The requested page does not exist.</p>";
-                    break;
+            var lesson = lessons[topic];
+
+            if (lesson) {
+                contentElement.innerHTML = `<h2>${lesson.title}</h2><p>${lesson.content}</p>`;
+                if (lesson.video) {
+                    contentElement.innerHTML += `<p>Watch the video tutorial: <a href="${lesson.video}" target="_blank">${lesson.video}</a></p>`;
+                }
+            } else if (topic === 'progress') {
+                contentElement.innerHTML = "<h2>User Progress</h2><p>Track your progress and completed lessons here...</p>";
+            } else {
+                contentElement.innerHTML = "<h2>404 - Not Found</h2><p>The requested page does not exist.</p>";
             }
         }
 
