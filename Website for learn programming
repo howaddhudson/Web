@@ -13,13 +13,9 @@
         <h1>Programming Learning Website</h1>
     </header>
     
-    <nav>
+    <nav id="navigation">
         <a href="#" onclick="loadContent('home')">Home</a>
-        <a href="#" onclick="loadContent('html')">HTML</a>
-        <a href="#" onclick="loadContent('css')">CSS</a>
-        <a href="#" onclick="loadContent('javascript')">JavaScript</a>
-        <a href="#" onclick="loadContent('python')">Python</a>
-        <!-- Add more topics as needed -->
+        <!-- Links will be dynamically added here -->
         <a href="#" onclick="loadContent('progress')">Progress</a>
     </nav>
 
@@ -41,27 +37,26 @@
     </footer>
 
     <script>
-        // Sample lessons for each topic
         const lessons = {
             html: {
                 title: "HTML Basics",
                 content: "Learn the fundamentals of HTML...",
-                video: "https://www.youtube.com/watch?v=xxxxxx"
+                video: "https://www.youtube.com/embed/xxxxxx"
             },
             css: {
                 title: "CSS Styling",
                 content: "Explore the world of CSS for styling web pages...",
-                video: "https://www.youtube.com/watch?v=yyyyyy"
+                video: "https://www.youtube.com/embed/yyyyyy"
             },
             javascript: {
                 title: "JavaScript Fundamentals",
                 content: "Get started with JavaScript programming...",
-                video: "https://www.youtube.com/watch?v=zzzzzz"
+                video: "https://www.youtube.com/embed/zzzzzz"
             },
             python: {
                 title: "Python Programming",
                 content: "Learn the basics of Python programming...",
-                video: "https://www.youtube.com/watch?v=wwwwww"
+                video: "https://www.youtube.com/embed/wwwwww"
             }
             // Add more lessons for other topics
         };
@@ -73,13 +68,27 @@
             if (lesson) {
                 contentElement.innerHTML = `<h2>${lesson.title}</h2><p>${lesson.content}</p>`;
                 if (lesson.video) {
-                    contentElement.innerHTML += `<p>Watch the video tutorial: <a href="${lesson.video}" target="_blank">${lesson.video}</a></p>`;
+                    contentElement.innerHTML += `<iframe width="560" height="315" src="${lesson.video}" frameborder="0" allowfullscreen></iframe>`;
                 }
             } else if (topic === 'progress') {
                 contentElement.innerHTML = "<h2>User Progress</h2><p>Track your progress and completed lessons here...</p>";
             } else {
                 contentElement.innerHTML = "<h2>404 - Not Found</h2><p>The requested page does not exist.</p>";
             }
+        }
+
+        function generateNavigation() {
+            var navElement = document.getElementById('navigation');
+            var topics = Object.keys(lessons);
+            topics.forEach(topic => {
+                var link = document.createElement('a');
+                link.href = "#";
+                link.textContent = topic.charAt(0).toUpperCase() + topic.slice(1); // Capitalize first letter
+                link.onclick = function() {
+                    loadContent(topic);
+                };
+                navElement.insertBefore(link, navElement.lastChild); // Insert before the last child (progress link)
+            });
         }
 
         document.getElementById("codeForm").addEventListener("submit", function(event) {
@@ -94,6 +103,9 @@
                 alert("Please enter some code before submitting.");
             }
         });
+
+        // Generate navigation links when the page loads
+        window.onload = generateNavigation;
     </script>
 </body>
 </html>
